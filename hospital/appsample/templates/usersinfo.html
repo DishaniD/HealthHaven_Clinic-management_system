@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Content -->
+<div class="content">
+	<!-- Start Club Management -->
+	<div class="row">
+		<div class="col-md-6 mt-2 title">
+         <h5>Users</h5>
+      </div>
+	</div>
+    <div class="row">
+    	<div class="col-md-12 mt-2 ml-auto table-responsive">
+    		<table class="table table-hover tbl-mgt">
+    			<thead>
+    				<tr>
+    					<th scope="col">NO</th>
+                  <th scope="col">User</th>
+                  <th scope="col">User Designation</th>
+						<th scope="col" colspan="2">Action</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+					{% for u in user %}
+					<tr>
+						<td>{{u.id}}</td>
+						<td>{{u.username}}</td>
+                  <td>{{u.user_group}}</td>
+						<td>   
+                     <button type="button" class="btn btn-sm btn-info">
+                        <a href="{{d.id}}">
+                           <span style="color: #fff;">
+                              Details
+                           </span>
+                        </a>
+                     </button>
+                  </td>
+					</tr>
+					{% endfor %}
+				</tbody>
+
+    		</table>
+    	</div>
+   </div>
+   <!-- End Club Table -->
+	<!-- End Club Management -->
+</div>
+<!-- End Content -->
+{% endblock %}

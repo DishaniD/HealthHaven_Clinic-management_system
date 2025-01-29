@@ -1,0 +1,276 @@
+
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div style="background-color:#e9edf2; " >
+<div class="rounded-pill text-center fw-bold fs-5 shadow p-3 mb-4 bg-body rounded "  
+style = "background-color:yellow; width:300px; margin-left:500px;">
+Appointment Management
+</div>
+
+
+<div class="row">
+    <div class=" p-3 my-3  col-md-4"  >
+		<form method = "POST"  style="margin-left:10px;" class="pl-3">
+			{% csrf_token %}
+
+		
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Clinic Name</label>
+   					<div class="col-sm-7" >
+     					 <!--<input type="email" class="form-control" >-->
+     					 {{form.clinic}}
+    				</div>
+  				</div>
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;"> Clinic Date</label>
+   					<div class="col-sm-7"  >
+     					 
+     					 {{form.clinic_date}}
+    				</div>
+  				</div>
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Appo. No</label>
+   					<div class="col-sm-7"  >
+     					 <!--<input type="email" class="form-control" >-->
+     					 {{form.appointmentnumber}}
+    				</div>
+  				</div>
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Patient Name</label>
+   					<div class="col-sm-7" >
+     					 
+     					 {{form.patient}}
+    				</div>
+  				</div>
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Symptom</label>
+   					<div class="col-sm-7"  >
+     					 
+     					 {{form.symptoms}}
+    				</div>
+  				</div> 
+  				<fieldset class="border p-2 " >
+  					<legend>diagnosis</legend>
+
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Prob</label>
+   					<div class="col-sm-7"  >
+     					 <img src="{% static 'chart.png' %}">
+    				</div>
+  				</div> 
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Diagnosis</label>
+   					<div class="col-sm-7"  >
+     					 
+     					 {{form.diagnosis}}
+    				</div>
+  				</div> 	
+  				</fieldset>
+    				<h4>prescription </h4>
+
+<hr style="width: 500px; height: 10px;">
+
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-4 col-form-label fw-bold" style="font-size: 14px;">Medicine</label>
+   					<div class="col-sm-7"  >
+     					 
+     					 {{form.medicines}}
+    				</div>
+  				</div> 	
+
+  	<h4>services </h4>
+
+<hr style="width: 500px; height: 10px;">
+			
+			{{formset.management_form}}
+			{% for innerform in formset %}
+				<div class="inner-form">
+					{{innerform}}
+				</div>
+			{% endfor %}
+			
+			
+			<input type="submit" value="Add New " name="save" style="color: black" class="btn btn-outline-info  border-2 fw-bold btn-sm fst-italic float-end">
+			<input type="submit" value="Delete" style="color: black" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left">
+			<input type="reset"  value="Cancel" style="color: black" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end">
+
+		</form>
+    </div>
+    <div class="p-3 my-3  col-md-8  " >
+		<div class= "row " > 
+			<form method = "GET" class=" pl-5 row mt-2 pb-0 pr-0" >
+
+	  			
+	  			<div class="col-md-4 ">
+	  				<div class="row ">
+    					<label  class="col-sm-4 col-form-label fw-bold pt-0 " style="font-size: 14px;">Appo. Number</label>
+   						<div class="col-sm-7 " style="margin-left: -20px;">
+     					 <!--<input type="email" class="form-control" >-->
+     					 	{{filter.form.appointmentnumber}}
+    					</div>
+  					</div>
+	  			</div>
+	  			<div class="col-md-3">
+	  				<div class="row ">
+    					<label  class="col-sm-4 col-form-label fw-bold pt-0	 " style="margin-left: -38px; font-size: 14px;" >Clinic Date</label>
+   						<div class="col-sm-8 ">
+     					 
+     					 	{{filter.form.clinic_date}}
+    					</div>
+  					</div>
+	  			</div>
+	  			<div class="col-md-3 ">
+	  				<div class="row ">
+    					<label  class="col-sm-4 col-form-label fw-bold pt-0 pl-0" style="margin-left: -38px; font-size: 14px;">Patient Name</label>
+   						<div class="col-sm-8">
+     					 
+     					 	{{filter.form.patient}}
+    					</div>
+  					</div>
+	  			</div>
+	  			
+				<div class="pt-0 col-md-2" style="margin-left: -60px; margin-top: 2px;">
+					<input type="submit" value="Search " class="btn btn-success btn-sm float-end  ">
+				</div>
+						
+			
+		</form>
+		
+		</div>
+		<div class= "row pt-3 pl-5 pr-4 pt-0">
+
+					<table class="table  table-hover caption-top ">
+						<thead class=" table-active" style="background-color:gray; color:lightgray;">
+							<tr>
+								<th scope="col">Appointment No</th>
+								<th scope="col">Patient Name</th>
+								<th scope="col">Clinic Date</th>
+								<th scope="col">View</th>
+								
+							</tr>
+						</thead>
+				  
+						<tbody>
+							{% for d in data %}
+							<tr>
+																
+								<td>{{d.appointmentnumber}}</td>
+								<td>{{d.patient}}</td>
+								<td>{{d.clinic_date}}</td>
+								<td>
+									<a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" style="color: black;" >View</a>
+								</tr>
+							{% endfor %}
+						</tbody>
+				  
+					</table>
+
+
+
+
+		</div>
+
+		
+    </div>
+</div>
+  
+</div>
+
+<script type="text/javascript">
+	
+	/*function fillappointmentnumber(clinic_date){
+		document.getElementById('id_appointmentnumber').value = clinic_date.;
+		alert(clinic_date);
+		
+	}*/
+
+
+$('#id_clinic').change(function(){
+
+  var combo = document.getElementById('id_clinic');
+  var clinic_id = combo.value;
+
+  $.ajax({
+    url:'../api/clinic_date',
+    data:{
+      'clinic_id':clinic_id
+
+    },
+    success:function(data){
+      var cmbClinicDate =  document.getElementById('id_clinic_date');
+      cmbClinicDate.disabled = false;
+      cmbClinicDate.innerHTML = '<option value="" selected="">---------</option>';
+      data.forEach(function(clinic_date){
+        var option = document.createElement('option');
+        option.value = clinic_date.id;
+        option.innerHTML = clinic_date.date + (" room number ") + clinic_date.room;
+        /*console.log(option);*/
+        cmbClinicDate.appendChild(option);
+      
+      
+      });
+    }
+
+
+  });
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+

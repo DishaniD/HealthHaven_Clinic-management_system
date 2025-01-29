@@ -1,0 +1,211 @@
+{% extends 'main.html' %}
+{% block content %}
+
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>Clinic Dates Managment</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="{% url 'clinicDates' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>User Registrations</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{% url 'employees' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          {% if perms.appsample.view_doctor %}
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{data}}</h3>
+
+                <p>Today Appoinments </p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          {% endif %}
+          <!-- ./col -->
+          {% if perms.appsample.add_clinic %}
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Clinic Management</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'clinics' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          {% endif %}	
+
+          <!-- ./col -->
+
+           {% if perms.appsample.view_symptom %}
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Symtom Management</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'symptoms' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          {% endif %}	
+
+        {% if perms.appsample.view_employee %}
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Global Offers/News Management</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'newsdetails' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Local Offers/News Management</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'newsdetails2' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+        {% endif %}
+
+
+
+
+
+<a href = "../">Log out</a>
+
+<br>
+
+<div class="row">
+	<div class="col-md-4">
+		<a class="nav-link" href="{% url 'employees' %}">Employee</a>
+		
+
+		{% if perms.appsample.view_clinic %}
+		<a class="nav-link" href="{% url 'clinics' %}" id="demo">clinic </a>    
+		{% endif %}	
+
+
+		<!-- 
+
+		<a class="nav-link" href="{% url 'clinicDates' %}">clinicDate</a>
+
+		<a class="nav-link" href="{% url 'patients' %}">patient</a>
+
+		<a class="nav-link" href="{% url 'designations' %}">designation</a>
+
+		<a class="nav-link" href="{% url 'diagnosises' %}">diagnosis</a>
+
+		<a class="nav-link" href="{% url 'symptoms' %}">symptom</a>
+
+		<a class="nav-link" href="{% url 'appointments' %}">appointment</a>
+		<a class="nav-link" href="{% url 'appointments1' %}">appointment1</a>
+		<a class="nav-link" href="{% url 'appointment2' %}">appointment2</a>
+		
+		
+
+		
+		
+	</div>
+	<div class="col-md-4">
+		<a class="nav-link" href="{% url 'prescriptions' %}">prescription</a>
+		
+		<a class="nav-link" href="{% url 'appointmentDiagnosis' %}">appointmentDiagnosis</a>
+
+		<a class="nav-link" href="{% url 'appointmentSymptoms' %}">appointmentSymptom</a>
+
+		<a class="nav-link" href="{% url 'rooms' %}">Rooms</a>
+
+		<a class="nav-link" href="{% url 'services' %}">Service</a>
+
+		<a class="nav-link" href="{% url 'invoices' %}">Invoice</a>
+
+		<a class="nav-link" href="{% url 'payments' %}">Payment</a>
+
+		<a class="nav-link" href="{% url 'invoiceservices' %}">Invoice Service</a>
+
+		<a class="nav-link" href="{% url 'appoinmentstatus' %}">Appoinment Status</a>
+
+		<a class="nav-link" href="{% url 'diagnosissymtoms' %}">Diagnosis Symtom</a>
+
+		<a class="nav-link" href="{% url 'medicines' %}">Medicine </a>
+
+	</div>
+ -->
+	<div class="col-md-4">
+		<a class="nav-link" href="{% url 'reportDiagnosis' %}">Diagnosis Report</a>
+		<a class="nav-link" href="{% url 'rprt_App_Count_Clinic' %}">Appointments Count By Clinic</a>
+		<a class="nav-link" href="{% url 'rprt_App_Count_Doctor' %}">Appointments Count of each doctor</a>
+		<a class="nav-link" href="{% url 'rprt_App_Status_Today' %}">Today appointment Status</a>
+		<a class="nav-link" href="{% url 'rprt_CD_Details' %}">Clinic Date Details Report</a>
+		<a class="nav-link" href="{% url 'rprt_alrgic_med' %}">Allergy medicines Report</a>
+		<a class="nav-link" href="{% url 'rprt_mst_recmd_med' %}">Most recommend medicines in each clinic </a>
+		<a class="nav-link" href="{% url 'rprt_CD_Cunt_dctr' %}"># of clinic dates for each doctor </a>
+		<a class="nav-link" href="{% url 'rprt_total_pymnt' %}">Total Payment in each clinic</a>
+		<a class="nav-link" href="{% url 'rprt_Emp_Cunt_By_Desig' %}">Total Employee Count By Designation</a>
+    <a class="nav-link" href="{% url 'rprt_Ptnt_Htry' %}">Each Patient Diagnosis History</a>
+    <a class="nav-link" href="{% url 'rprt_Sytm_Htry' %}">Symptom History</a>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+

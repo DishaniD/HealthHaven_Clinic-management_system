@@ -1,0 +1,169 @@
+{% load static %}
+<style type="text/css">
+  .hello-msg{
+
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+    
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark  " style="background-color: #000080;">
+  <img src="{% static 'images/lotus.png' %}">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'dish' %}">Dashbord <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'employees' %}">Employee</a>
+      </li>  
+	  
+	  <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">log in </a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">log out </a>
+      </li> 
+    </ul>    
+  </div>
+  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span class="hello-msg"><a href="{% url 'logout' %}"></a></span>
+</nav>
+ 
+
+
+
+</body>
+
+
+<footer  class="text-center text-lg-start text-white" style="background-color: #929fba" >
+
+    <!-- Grid container -->
+    <div class="container  ">
+      <!-- Section: Links -->
+      <section class="">
+
+        <!--Grid row-->
+        <div class="row">
+          <hr class=" mt-3 " style="background-image: radial-gradient(circle, black, gray);
+           height: 2px; "  > 
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3  mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Boralesgauwa Medical Center
+            </h6>
+            <p>
+              Bmedical is Leading Private healthcare Institution with superior care with world class facilities in the heart of Sri Lanka.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 ml-5">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Clinics</h6>
+            <p>
+              <a class="text-white">Eye Clinic</a>
+            </p>
+            <p>
+              <a class="text-white">Neuromuscular Clinic</a>
+            </p>
+            <p>
+              <a class="text-white">Cardiology Clinic</a>
+            </p>
+            <p>
+              <a class="text-white">Skin Clinic</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> Colombo, 0005</p>
+            <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2  mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+            <!-- Facebook -->
+            <a
+               class="btn  btn-floating m-1 btn-outline-light"
+               href="#!">
+               <i class="fab fa-facebook-f"></i>
+           </a>
+
+            <!-- Twitter -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               href="#!">
+               <i class="fab fa-twitter"></i>
+           </a>
+
+            <!-- Google -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               href="#!">
+               <i class="fab fa-google"></i >
+           </a>
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               href="#!">
+               <i class="fab fa-instagram"></i>
+           </a>
+
+            <!-- Linkedin -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"               
+               href="#!">
+               <i class="fab fa-linkedin-in"></i>
+           </a>
+            
+          </div>
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/"
+         >BMedical.com</a
+        >
+    </div>
+    <!-- Copyright -->
+</footer>
+
+
+
+
+
+
+
+
+

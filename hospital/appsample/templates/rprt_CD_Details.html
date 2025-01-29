@@ -1,0 +1,150 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+<div style="background-color:#C2DFFF;" >
+<div class="rounded-pill text-center fw-bold fs-6 shadow p-3 mb-4 bg-body rounded " style = "background-color:red; width:300px; margin-left:500px;">
+Clinic Date Details Report</div>
+  
+</div>
+<form method = "POST"  style="margin-left:10px;" class="pl-3">
+<div class="row ">
+
+    <div class="col-md-4 form-group">
+        <div class="row">
+            <label  class="col-sm-4 col-form-label fw-bold">Clinic Name </label>
+            <select class="col-sm-8 col-form-label " id="cmbClinic">
+              <option  selected disabled>Select One</option>
+
+              {% for clinic in clinics %}
+                    <option value="{{clinic.id }}">{{ clinic.name }}</option>
+              {% endfor %}
+
+
+            </select>           
+        </div>
+    </div>
+
+        <div class="col-md-4 form-group">
+        <div class="row">
+            <label  class="col-sm-4 col-form-label fw-bold">Clinic Date </label>
+            <select class="col-sm-8 col-form-label " id="cmbClinicDate">
+              <option  selected disabled>Select One</option>
+
+              {% for clinicDate in clinicDates %}
+                    <option value="{{clinicDate.id }}">{{ clinicDate.start_time }}</option>
+              {% endfor %}
+
+
+            </select> 
+        </div>
+    </div>
+</div>
+</form>
+<div>
+	<canvas id="myChart" width="400" height="100"></canvas>
+</div>
+
+<script type="text/javascript">
+	
+
+$(document).ready(function(){
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var config = {
+		type: 'bar',
+		data: {
+			labels:['Dr. Upendra', 'Dr.Pathirana', 'Dr. Nayana'],
+			datasets:[{
+				label:'#Capacity',
+				data:[50, 30, 40],
+
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.5)',
+                ],
+                
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ]
+            },
+                {
+                label:'#Occupide',
+                data:[30, 20, 10],
+
+                backgroundColor: [
+                    'rgba(153, 102, 255, 0.5)',
+                ],
+                
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+
+                ]
+            },
+                {
+                label:'#Remanining ',
+                data:[5, 10, 5],
+
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.5)',
+                ],
+                
+                borderColor: [
+                    'rgba(255, 206, 86, 1)',
+                ]
+            }
+
+            ]
+			
+		},
+		options:{},
+
+	};
+	var myChart = new Chart(ctx, config);
+});
+
+
+/*$('#cmbDiagnosis').change(function(){
+
+  alert(this.value);
+
+});*/
+
+
+/*filter clinicdate*/
+
+$('#cmbClinic').change(function(){
+
+  var combo = document.getElementById('cmbClinic');
+  var clinic_id = combo.value;
+
+  $.ajax({
+    url:'../api/clinic_date',
+    data:{
+      'clinic_id':clinic_id
+
+    },
+    success:function(data){
+      var cmbClinicDate =  document.getElementById('cmbClinicDate');
+      cmbClinicDate.disabled = false;
+      cmbClinicDate.innerHTML = '<option disabled selected >---------</option>';
+      data.forEach(function(clinic_date){
+        var option = document.createElement('option');
+        option.value = clinic_date.id;
+        option.innerHTML = clinic_date.start_time;
+        /*console.log(option);*/
+        cmbClinicDate.appendChild(option);
+      
+      
+      });
+    }
+
+  });
+
+});
+
+
+</script>
+
+
+
+{% endblock %}
+

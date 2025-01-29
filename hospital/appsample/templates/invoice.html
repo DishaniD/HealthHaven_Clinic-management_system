@@ -1,0 +1,365 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+  #example1_info{
+    display: none !important;
+  }
+
+  .dataTables_length{
+    display: none !important;
+
+  }
+
+  .adad{
+  	margin-top: -58px;
+  	margin-left: 40px;
+  }
+
+
+</style>
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Invoice Management</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="background-color:#C2DFFF;" >
+
+<div class="row">
+    <div class=" p-3 my-3  col-md-4"  >
+		<form method = "POST"  style="margin-left:10px;" class="pl-3">
+			{% csrf_token %}
+			{{form.errors}}
+
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Reference No</label>
+					<div class="col-sm-8">
+ 					 {{form.reference_no}}
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">App Num</label>
+					<div class="col-sm-8">
+ 					 {{form.appointment}}
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">App Fee</label>
+					<div class="col-sm-8">
+ 					 {{form.appointment_fee}}
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Doctor Fee</label>
+					<div class="col-sm-8">
+ 					 {{form.doctor_fee}}
+				</div>
+			</div>
+
+  			{{formset.management_form}}
+  			
+				{% for innerform in formset %}
+
+				{{innerform.errors}}
+					<div class="inner-form">					
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Service</label>
+					<div class="col-sm-8">
+ 					 {{innerform.service}}
+ 					 {{innerform.service.error}}
+				</div>
+			</div>						
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Multiple</label>
+					<div class="col-sm-8">
+ 					 {{innerform.multiple}}
+ 					 {{innerform.multiple.error}}
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Description</label>
+					<div class="col-sm-8">
+ 					 {{innerform.description}}
+				</div>
+			</div>
+
+
+			</div>
+				{% endfor %}   
+		
+		<input type="submit" value="Save " hidden name="save" style="color: black; margin-top:20px;" class="btn btn-info  border-2 fw-bold btn-sm fst-italic float-end" id="id_save">
+		<input type="submit" value="Delete" hidden style="color: black; margin-top:20px;" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left" id="id_delete">
+	
+
+		<div class="row">
+			<input type="button" value="Checkout"  style="color: black; margin-top:20px; margin-bottom: 30px;" class="btn btn-success  border-2 fw-bold btn-sm fst-italic float-left" onclick="checkout()" >
+		</div>
+	
+
+
+
+
+<div>
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Total</label>
+					<div class="col-sm-8">
+ 					 <input  id="id_total" readonly class="form-control">
+				</div>
+			</div>
+
+
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Discount</label>
+					<div class="col-sm-8">
+ 					 {{form.discount}}
+ 					 {{form.discount.error}}
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label  class="col-sm-4 col-form-label fw-bold">Discounted Total</label>
+					<div class="col-sm-8">
+ 					 {{form.discounted_total}}
+ 					 {{form.discounted_total.error}}
+				</div>
+			</div>			
+
+
+</div> 
+
+		<a href="{% url 'invoices' %}" class="btn btn-primary btn-sm border-2 fst-italic fw-bold float-end"> Go</a>
+
+			<!-- <input type="reset"  value="Cancel" style="color: black" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end"> -->
+		</form>
+    </div>
+    <div class="p-3 my-3  col-md-8  " >
+	
+ <!-- /.card-header -->
+      <div class="card-body" style="background-color:#C2DFFF;">
+      <h5 style="margin-bottom: -30px;">All Invoice</h5>
+      <table id="example1" class="table table-bordered table-striped table-hover " >
+        <thead style="background-color:gray; color:black;">
+        <tr>
+					<th scope="col">Reference No</th>
+					<th scope="col">Appointmet Details</th>
+					<th scope="col">Services</th>
+					<th scope="col">View</th>
+        </tr>
+        </thead>
+        <tbody>
+				{% for d in data %}
+				<tr>
+													
+					<td>{{d.reference_no}}</td>
+					<td>{{d.appointment}}</td>
+					<td>{{d.services.all|join:', '}}</td>
+					<td>
+						<a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.appointment.id}}" style="color: black;" >View</a>
+						
+				</tr>
+				{% endfor %}
+  			</tbody>
+        <tfoot>
+        </tfoot>
+      </table>
+
+
+
+		</div>
+
+		
+    </div>
+</div>
+  
+</div>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+
+<script type="text/javascript">
+
+
+$(function(){
+	$('.inner-form').formset({
+		prefix: '{{ formset.prefix }}', 
+		deleteCssClass: 'delete-raw btn btn-warning btn-sm ',
+		addCssClass: 'add-raw btn btn-info btn-sm adad fw-bolder',
+		addText:'+ ',
+		deleteText:'-.',
+		removed: function($raw){
+			alert("do you really want to delete")
+		}
+
+	});
+
+})
+
+
+$(document).ready(function(){
+
+{% if reveal  %}
+
+
+document.getElementById('id_save').hidden = false;
+document.getElementById('id_delete').hidden = false;
+
+
+{% else %}
+
+
+document.getElementById('id_save').hidden = true;
+document.getElementById('id_delete').hidden = true;
+{% endif %}
+
+});
+
+</script>
+
+<script type="text/javascript">
+
+
+function checkout(){
+	
+	path = window.location.pathname;
+	lastpath = path.substring(path.lastIndexOf('/')+1);
+
+  $.ajax({
+    url:'../api/total/',
+    data:{
+      'invoice':lastpath
+
+    },
+    success:function(data){
+      var total =  document.getElementById('id_total');
+      var discount =  document.getElementById('id_discount');
+      var discounted_total =  document.getElementById('id_discounted_total');
+      total.value = data['total'];
+      d = data['total'] * {{discount_rate}}/100 ;
+      discount.value =  d;
+      dt = total.value - discount.value ;
+      discounted_total.value = dt;
+    
+
+    	 $.ajax({
+			    url:'../api/total/',
+			    method:'POST',
+			    data:{
+			      'invoice':lastpath,
+			      'discount':d,
+			      'discounted_total':dt,
+			    },
+			    success:function(data){
+			      
+			    
+			    }
+
+			  });
+
+    }
+
+  });
+
+
+
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script type="text/javascript">
+	
+
+/*checkbox selector*/
+$(document).ready(function() {
+    $('#id_appointment').select2({
+        width: '100%' 
+    });
+});
+
+
+</script>
+<!-- DataTables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+<script type="text/javascript">
+	 $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
+  });
+</script>
+
+
+
+
+<!-- 
+<script type="text/javascript">
+	/* inner form add button */
+
+$(function(){
+	$('.inner-form').formset({
+		prefix: '{{ formset.prefix }}', 
+		deleteCssClass: 'delete-raw btn btn-danger ',
+		addCssClass: 'add-raw btn btn-info ',
+		removed: function($raw){
+			alert("do you really want to delete")
+		}
+
+	});
+
+})
+
+
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+ -->
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,59 @@
+{% extends 'main2.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Appointmet table -->
+
+
+<div style="background-color:#C2DFFF"></div>
+
+
+
+
+<div class="row" style="margin-top:100px;">
+<div class="col-md-9">
+<!-- /.card-header -->
+<div class="card-body" >
+  <h5 style="margin-bottom: -30px;">Doctor Time Table</h5>
+  <table id="example1" class="table table-bordered table-striped table-hover " >
+    <thead style="background-color:#B4B4B4; color:black;">
+      <tr>
+          <th scope="col">Doctor Namec</th>
+          <th scope="col">Clinic</th>
+          <th scope="col">Day 1</th>
+          <th scope="col">Day 2</th>
+          <th scope="col">Day 3</th>
+          <th scope="col">Day 4</th>
+          <th scope="col">Day 5</th>
+          
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in data %}
+      <tr>
+        <td>{{d.clinic}}</td>
+        <td>{{d.doctor}}</td>
+        <td>{{d.clinic_date}}</td>
+        <td>{{d.appo_no}}</td>
+        <td>{{d.appoinment_statu}}</td>
+        <td>{{d.appoinment_statu}}</td>
+        <td><a class="btn btn-outline-warning btn-sm border-2 " href = "{{d.id}}" 
+              style="color: black;"  id="btnView">See more</a></td>
+              
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+
+</div> 
+</div>
+<div class="col-md-3"></div> 
+
+</div>  
+
+
+
+{% endblock %}

@@ -1,0 +1,481 @@
+{% extends 'main2.html' %}
+{% block content %}
+{% load static %}
+    <div class="row">
+
+    </div>
+
+    <div class="row" style="margin-top: 100px;">
+        <div class="container">
+            <div class="row" id="aboutus">
+                <h2 class="font-weight-bold" style="color: lightseagreen;  font-size: 50px;">
+                    Our Otolaryngologist
+                </h2>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <p style="color:black;font-size: 18px; font-weight: bold;" >Dr. Saman Yasawaththa</p>
+                    <p style="color:black;font-size: 16px;  "> MBBS, Otolaryngologist, ENT Surgeon </p>
+                    <p style="color:black;font-size: 18px;font-weight: bold;" > Dr. Chandra Jayasuriya</p>
+                    <p style="color:black;font-size: 16px;"> MBBS, (SL), Otolaryngologist, ENT Surgeon</p>
+                    <p style="color:black;font-size: 18px; font-weight: bold;" > Dr. Ravindra Kirihena</p>
+                    <p style="color:black;font-size: 16px;"> MBBS, Otolaryngologist, ENT Surgeon</p>
+
+                </div>
+                <div class="col-md-6" >
+                    <p style="color:black;font-size: 18px;" >Why B Medical ENT Clinic?</p>
+                    <p style="color:black;font-size: 16px;">
+                        We provide services to patients of all ages with a variety of Skin problems, including problems that affect hair & nails.
+                        Our medical services embrace your natural beauty. We are committed to providing you with state of the art treatments and the highest safety protocols in place in this country.
+                        Our goal is to provide you with personalized treatments and services over the years, focusing on your goals and desired outcome. 
+                        Our providers bring you over 60 years of combined experience since 1956. We offer you the most advanced therapeutic & cosmetic Dermatology treatments and the latest of technologies.We hope your experience at Skin Clinic exceeds your expectations.
+                    </p>
+                </div>
+
+            </div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 60px;">
+        <div class="container">
+            <div class="row" id="tourpackages">
+                <h2 class="font-weight-bold" style="color: lightseagreen;  font-size: 50px;">
+                    ENT Services
+                </h2>
+            </div>
+            <hr/>
+            <div class="row" style="margin-top: 8px;">
+                <div class="col-md-4">
+                    <div class="card" style="border-style: none; background-color: #F2F2F2;">
+                        <div class="card-header text-center" style="padding-bottom: 0px">
+                            <h5>Allergy Testing</h5>
+                        </div>
+                        <div class="card-body text-center" style="padding:10px 10px 2px 10px;">
+                            <img style="width: 90%; height:40%;" src="{% static 'resourse/image/website/allegy.jpeg' %}">
+                            <p style="color:black;font-size: 14px; padding-top: 5px;"> An allergy refers to an exaggerated reaction by our immune system in response to bodily contact with a foreign substance. Allergy-producing substances are called "allerge..</p>
+                        </div>
+                        <div class="card-footer" style="padding:10px 10px 10px 10px;">
+                            <a type="button" class="btn btn-block " data-toggle="modal" data-target="#myModal" style="border-radius: 0px; background-color: #D3D3D3;">
+                                Discover More <i class="fa fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false"
+                     role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header text-center">
+                                <h3 class="font-weight-bold" style="margin-left: 6px; color: black; font-family: Perpetua; font-size: 50px;">
+                                    03 Days Sri Lanka Tour Package
+                                </h3>
+                                <button style="color: #1d1b1b;" type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true"><i class="fa fa-window-close"></i></span>
+                                </button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="row" style="padding-top: 10px">
+                                    <div class="container">
+
+                                        <div class="col-md-12">
+                                            <nav class="navbar navbar-expand-sm" style="width: 100%; height: 110px; padding-top: 20px; background-color: #dee2e6;">
+                                                <ul class="nav navbar-nav navbar-left text-center" style="padding-left: 200px;">
+                                                    <li class="nav-item" style="color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-calendar"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">No of Days</h6>
+                                                            <p style="font-size: 12px">3</p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item" style="padding-left: 30px; color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-bed"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">Accomodation</h6>
+                                                            <p style="font-size: 12px">Star Class</p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item" style="padding-left: 30px;color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-utensils"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">Meal Plan</h6>
+                                                            <p style="font-size: 12px">Half Board</p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item" style="padding-left: 30px;color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-car"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">Traspotation</h6>
+                                                            <p style="font-size: 12px">Semi-Luxury</p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding-top: 20px;">
+                                            <div class="card" style="width: 100%; height: 520px;">
+                                                <div class="card-header">
+                                                    <h2 class="font-weight-bold">Day 01</h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row text-justify">
+                                                        <p style="color:black;font-size: 16px;">
+                                                            The city of Kandy in Sri Lanka is renowned as the social and cultural capital of the country.
+                                                            This breathtaking hill country is the perfect place for relaxing and reflecting.
+                                                            This city is well known for housing many ancient temples, and among them,
+                                                            the most renowned is the temple of 'Dalada Maligawa'(The Temple of the Tooth). Here, the tooth relic of Lord Buddha is reserved.
+                                                            It attracts thousands of visitors including the devotees to this city per year.
+                                                            Apart from that, this city has the largest and beautiful
+                                                            botanical garden in the island, known as Peradeniya Botanical Garden.
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <img class="ml-2" style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/dalada.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/peradeniya.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/pinnawala1.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/pinnawala.jpg' %}">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 20px;">
+                                                        <div>
+                                                            <h6>Activities</h6>
+                                                        </div>
+                                                        <ul style="color:black;font-size: 16px;">
+                                                            <li>Arrival in Kandy & take a city tour.</li>
+                                                            <li>Visit the Pinnawala elephant orphanage</li>
+                                                            <li>After the Lunch visit the Temple of the Sacred Tooth Relic.</li>
+                                                            <li>Visit the Temple of the Sacred Tooth Relic.</li>
+                                                            <li>Visit the Peradeniya Botanical Graden.</li>
+                                                            <li>Check in to the hotel & relax and overnight stay</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding-top: 20px;">
+                                            <div class="card" style="width: 100%; height: 450px;">
+                                                <div class="card-header">
+                                                    <h2 class="font-weight-bold">Day 02</h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row text-justify">
+                                                        <p style="color:black;font-size: 16px;">
+                                                            Colombo is the capital city of Sri Lanka; it comprises both the old and the new cultures of this country.
+                                                            Colombo and eighth-century port houses different financial,
+                                                            administrative, and other types of offices of relevance to the visitor.
+                                                            In short, this city is a piece of different offices of importance, which will attract the visitors.
+                                                            Through many stages, the city has developed into a modern and great city.
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <img class="ml-2" style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/gangarama1.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/galleface.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/colombocitycenter.jpg' %}">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 20px;">
+                                                        <div>
+                                                            <h6>Activities</h6>
+                                                        </div>
+                                                        <ul style="color:black;font-size: 16px;">
+                                                            <li>After the Breakfast, start the Colombo city tour.</li>
+                                                            <li>Visit the Gangarama Temple.</li>
+                                                            <li>Visit the Gallface Beach.</li>
+                                                            <li>Shopping</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card" style="border-style: none; background-color: #F2F2F2;">
+                        <div class="card-header text-center" style="padding-bottom: 0px">
+                            <h5>Hire Loss Treatments </h5>
+                        </div>
+                        <div class="card-body text-center" style="padding:10px 10px 2px 10px;">
+                            <img style="width: 90%; height:40%;" src="{% static 'resourse/image/website/hairloss.jpeg' %}">
+                            <p style="color:black;font-size: 14px; padding-top: 5px;"> WHAT IS HAIR LOSS? Hair loss can affect just your scalp or your entire body. It can be the result of heredity, hormonal changes, medical conditions or medications. Anyone...</p>
+                        </div>
+                        <div class="card-footer" style="padding:10px 10px 10px 10px;">
+                            <a type="button" class="btn btn-block " data-toggle="modal" data-target="#myModal" style="border-radius: 0px; background-color: #D3D3D3;">
+                                Discover More <i class="fa fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="day4pack" data-backdrop="static" data-keyboard="false"
+                     role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header text-center">
+                                <h3 class="font-weight-bold" style="margin-left: 6px; color: black; font-family: Perpetua; font-size: 50px;">
+                                    04 Days Sri Lanka Tour Package
+                                </h3>
+                                <button style="color: #1d1b1b;" type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true"><i class="fa fa-window-close"></i></span>
+                                </button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="row" style="padding-top: 10px">
+                                    <div class="container">
+
+                                        <div class="col-md-12">
+                                            <nav class="navbar navbar-expand-sm" style="width: 100%; height: 110px; padding-top: 20px; background-color: #dee2e6">
+                                                <ul class="nav navbar-nav navbar-left text-center" style="padding-left: 200px;">
+                                                    <li class="nav-item" style="color: white;">
+                                                        <i style="font-size: 40px; " class="fa fa-calendar"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">No of Days</h6>
+                                                            <p style="font-size: 12px">3</p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item" style="padding-left: 30px;color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-bed"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">Accomodation</h6>
+                                                            <p style="font-size: 12px">Star Class</p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item" style="padding-left: 30px;color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-utensils"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">Meal Plan</h6>
+                                                            <p style="font-size: 12px">Half Board</p>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item" style="padding-left: 30px;color: white;">
+                                                        <i style="font-size: 40px" class="fa fa-car"></i>
+                                                        <div >
+                                                            <h6 class="font-weight-bold" style="font-size: 14px">Traspotation</h6>
+                                                            <p style="font-size: 12px">Semi-Luxury</p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding-top: 20px;">
+                                            <div class="card" style="width: 100%; height: 520px;">
+                                                <div class="card-header">
+                                                    <h2 class="font-weight-bold">Day 01</h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row text-justify">
+                                                        <p style="color:black;font-size: 16px;">
+                                                            The city of Kandy in Sri Lanka is renowned as the social and cultural capital of the country.
+                                                            This breathtaking hill country is the perfect place for relaxing and reflecting.
+                                                            This city is well known for housing many ancient temples, and among them,
+                                                            the most renowned is the temple of 'Dalada Maligawa'(The Temple of the Tooth). Here, the tooth relic of Lord Buddha is reserved.
+                                                            It attracts thousands of visitors including the devotees to this city per year.
+                                                            Apart from that, this city has the largest and beautiful
+                                                            botanical garden in the island, known as Peradeniya Botanical Garden.
+                                                        </p>
+                                                    </div> 
+                                                    <div class="row">
+                                                        <img class="ml-2" style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/dalada.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/peradeniya.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/pinnawala1.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/pinnawala.jpg' %}">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 20px;">
+                                                        <div>
+                                                            <h6>Activities</h6>
+                                                        </div>
+                                                        <ul style="color:black;font-size: 16px;">
+                                                            <li>Arrival in Kandy & take a city tour.</li>
+                                                            <li>Visit the Pinnawala elephant orphanage</li>
+                                                            <li>After the Lunch visit the Temple of the Sacred Tooth Relic.</li>
+                                                            <li>Visit the Temple of the Sacred Tooth Relic.</li>
+                                                            <li>Visit the Peradeniya Botanical Graden.</li>
+                                                            <li>Check in to the hotel & relax and overnight stay</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding-top: 20px;">
+                                            <div class="card" style="width: 100%; height: 450px;">
+                                                <div class="card-header">
+                                                    <h2 class="font-weight-bold">Day 02</h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row text-justify">
+                                                        <p style="color:black;font-size: 16px;">
+                                                            Colombo is the capital city of Sri Lanka; it comprises both the old and the new cultures of this country.
+                                                            Colombo and eighth-century port houses different financial,
+                                                            administrative, and other types of offices of relevance to the visitor.
+                                                            In short, this city is a piece of different offices of importance, which will attract the visitors.
+                                                            Through many stages, the city has developed into a modern and great city.
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <img class="ml-2" style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/gangarama1.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/galleface.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/colombocitycenter.jpg' %}">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 20px;">
+                                                        <div>
+                                                            <h6>Activities</h6>
+                                                        </div>
+                                                        <ul style="color:black;font-size: 16px;">
+                                                            <li>After the Breakfast, start the Colombo city tour.</li>
+                                                            <li>Visit the Gangarama Temple.</li>
+                                                            <li>Visit the Gallface Beach.</li>
+                                                            <li>Shopping</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding-top: 20px;">
+                                            <div class="card" style="width: 100%; height: 520px;">
+                                                <div class="card-header">
+                                                    <h2 class="font-weight-bold">Day 03</h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row text-justify">
+                                                        <p style="color:black;font-size: 16px;">
+
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <img class="ml-2" style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/benthotabeach2.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/benthotabeach.jpg' %}">
+                                                        <img class="ml-2"  style="width: 150px; height: 120px;" src="{% static 'resourse/image/website/benthotaturtlehacery.jpg' %}">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 20px;">
+                                                        <div>
+                                                            <h6>Activities</h6>
+                                                        </div>
+                                                        <ul style="color:black;font-size: 16px;">
+                                                            <li>Arrival in Benthota.</li>
+                                                            <li>Visit the Turtle hacery</li>
+                                                            <li>After the Lunch visit the Temple of the Sacred Tooth Relic.</li>
+                                                            <li>Visit the beach.</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" >
+                    <div class="card" style="border-style: none; background-color: #F2F2F2;">
+                        <div class="card-header text-center" style="padding-bottom: 0px">
+                            <h5>Dermal Fillers</h5>
+                        </div>
+                        <div class="card-body text-center" style="padding:10px 10px 2px 10px;">
+                            <img style="width: 90%; height:40%;" src="{% static 'resourse/image/website/Dermal Fillers.jpeg' %}">
+                            <p style="color:black;font-size: 14px; padding-top: 5px;">RESTYLANE - Natural beauty from within A passion for beauty and innovation is the driving force behind the rapid development of Restylane This crystal-clear gel helps the...</p>
+                        </div>
+                        <div class="card-footer" style="padding:10px 10px 10px 10px;">
+                            <a type="button" class="btn btn-block " data-toggle="modal" data-target="#myModal" style="border-radius: 0px; background-color: #D3D3D3;">
+                                Discover More <i class="fa fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-4">
+                    <div class="card" style="border-style: none; background-color: #F2F2F2;">
+                        <div class="card-header text-center" style="padding-bottom: 0px">
+                            <h5>Hair Transplant</h5>
+                        </div>
+                        <div class="card-body text-center" style="padding:10px 10px 2px 10px;">
+                            <img style="width: 90%; height:40%;" src="{% static 'resourse/image/website/Hair Transplant.jpeg' %}">
+                            <p style="color:black;font-size: 14px; padding-top: 5px;">Hair transplant surgery involves moving scalp hair and hair follicles from an area called the donor dominant area (where the hair will continue to grow throughout the lif...</p>
+                        </div>
+                        <div class="card-footer" style="padding:10px 10px 10px 10px;">
+                            <a type="button" class="btn btn-block " data-toggle="modal" data-target="#myModal" style="border-radius: 0px; background-color: #D3D3D3;">
+                                Discover More <i class="fa fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="border-style: none; background-color: #F2F2F2;">
+                        <div class="card-header text-center" style="padding-bottom: 0px">
+                            <h5>Electrolysis</h5>
+                        </div>
+                        <div class="card-body text-center" style="padding:10px 10px 2px 10px;">
+                            <img style="width: 90%; height:40%;" src="{% static 'resourse/image/website/Electrolysis.jpeg' %}">
+                            <p style="color:black;font-size: 14px; padding-top: 5px;"> Electrolysis is a method of removing individual hairs from the face or body. Today's medical electrolysis devices destroy the growth center of the hair with chemical or h..</p>
+                        </div>
+                        <div class="card-footer" style="padding:10px 10px 10px 10px;">
+                            <a type="button" class="btn btn-block " data-toggle="modal" data-target="#myModal" style="border-radius: 0px; background-color: #D3D3D3;">
+                                Discover More <i class="fa fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="border-style: none; background-color: #F2F2F2;">
+                        <div class="card-header text-center" style="padding-bottom: 0px">
+                            <h5>Skin Tightening</h5>
+                        </div>
+                        <div class="card-body text-center" style="padding:10px 10px 2px 10px;">
+                            <img style="width: 90%; height:40%;" src="{% static 'resourse/image/website/Skin Tightening.jpeg' %}">
+                            <p style="color:black;font-size: 14px; padding-top: 5px;"> What can be treated with Radio Frequency (RF)?RF is a effective way to improve skin tightness and elasticity, reduce wrinkles and cellulite, boosting the overall conditi...</p>
+                        </div>
+                        <div class="card-footer" style="padding:10px 10px 10px 10px;">
+                            <a type="button" class="btn btn-block " data-toggle="modal" data-target="#myModal" style="border-radius: 0px; background-color: #D3D3D3;">
+                                Discover More <i class="fa fa-arrow-alt-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

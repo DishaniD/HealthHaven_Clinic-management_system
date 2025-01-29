@@ -1,0 +1,10 @@
+<h1>are you sure want to delete {{prescription}}?</h1>
+
+
+<form method = "POST">
+	{% csrf_token %}
+	<a href= "{%url 'prescription'%}" > Cancel</a>
+	<input type="submit" value="confirm"/>
+	
+
+</form>

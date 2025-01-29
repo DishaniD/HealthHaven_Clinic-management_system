@@ -1,0 +1,265 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Clinic Management</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background-color:#C2DFFF;" >
+
+<div class="row">
+    <div class=" p-3 my-3  col-md-4"  >
+    	{% if perms.appsample.add_clinic %}
+		<form method = "POST"  style="margin-left:10px;" class="pl-3">
+			{% csrf_token %}
+
+				<div class="row d-flex justify-content-center align-items-center "  id="success-alert" >
+						{% if messages %}
+							
+							{% for message in messages %}
+							<div class="alert {{ message.tags }}" role="alert" id="msg"  
+								style="width: 250px; height:40px; text-align: center; font-style: italic; padding-top: 7px;  margin-left: 60px; border-radius: 5px; font-weight: bolder;">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true"></span>
+								</button>
+								{{ message }}
+							</div>
+
+
+							{% endfor %}
+
+						{% endif %}
+
+				</div>
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-2 col-form-label fw-bold">Clinic Name</label>
+   					<div class="col-sm-10">
+     					 {{form.name}}
+    				</div>
+  				</div>
+<!--   				<div class="row mb-3">
+    				<label  class="col-sm-2 col-form-label fw-bold">Room Name</label>
+   					<div class="col-sm-10">
+     					 {{form.room}}
+    				</div>
+  				</div> -->
+  				<div class="row mb-3">
+    				<label  class="col-sm-2 col-form-label fw-bold">Type of Physician </label>
+   					<div class="col-sm-10">
+     					 <!--<input type="email" class="form-control" >-->
+     					 {{form.designation}}
+    				</div>
+  				</div>
+			
+			
+			<input type="submit" value="Add New " name="save" style="color: black" class="btn btn-outline-info  border-2 fw-bold btn-sm fst-italic float-end">
+			{% if perms.appsample.delete_clinic %}
+			<input type="submit" value="Delete" style="color: black" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left">
+			{% endif %}	
+			<input type="reset"  value="Cancel" style="color: black" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end">
+		</form>
+		{% endif %}	
+    </div>
+    <div class="p-3 my-3  col-md-8  " >
+		<div class= "row "> 
+			<form method = "GET" class=" pl-5 row mt-2">
+
+	  			
+	  			<div class="col-md-6 ">
+	  				<div class="row mb-3">
+    					<label  class="col-sm-5 col-form-label fw-bold  ">Clinic name </label>
+   						<div class="col-sm-7 ">
+     					 	{{filter.form.name}}
+    					</div>
+  					</div>
+	  			</div>
+	  			<div class="col-md-4 ">
+	  				<div class="row mb-3">
+    					<label  class="col-sm-4 col-form-label fw-bold  ">Room</label>
+   						<div class="col-sm-7 ">
+     					 	{{filter.form.room}}
+    					</div>
+  					</div>
+	  			</div>
+				<div class="col-md-1 ">
+					<input type="submit" value="Search " class="btn btn-success btn-sm float-end ">
+				</div>
+						
+			
+		</form>
+		
+		</div>
+		<div class= "row pt-3 pl-5 pr-4">
+
+					<table class="table table-striped  table-hover caption-top ">
+						<thead class=" table-active" style="background-color:gray; color:lightgray;">
+							<tr>
+								<th scope="col">Clinic name</th>
+								<th scope="col">Room</th>
+								<th scope="col">Physician</th>
+								<th scope="col">View</th>
+								
+							</tr>
+						</thead>
+				  
+						<tbody>
+							{% for d in page.object_list %}
+							<tr>
+																
+								<td>{{d.name}}</td>
+								<td>{{d.room}}</td>
+								<td>{{d.designation}}</td>
+								<td>
+									{% if perms.appsample.change_clinic %}
+									<a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" style="color: black;" >View</a>
+									{% endif %}	
+									
+							</tr>
+							{% endfor %}
+						</tbody>
+						<tfoot>
+
+            			</tfoot>
+				  
+					</table>
+
+					<nav aria-label="...">
+					  <ul class="pagination">
+
+					  	{% if page.has_previous %} 
+					    <li class="page-item ">
+					      <a class="page-link" href="{% url 'clinics' %}?page={{ page.previous_page_number }}" >Previous</a>
+					    </li>
+					    {% endif %}
+
+					   {% if page.has_previous %} 
+					    <li class="page-item ">
+					      <a class="page-link" href="{% url 'clinics' %}?page={{ page.previous_page_number }}" >
+					      	{{page.previous_page_number}}
+					      </a>
+					    </li>
+					    {% endif %}
+
+					    <li class="page-item active">
+					      <span class="page-link">
+					       {{page.number}}
+					        <span class="sr-only"></span>
+					      </span>
+					    </li>
+
+					    {% if page.has_next %} 
+					    <li class="page-item">
+					     	<a class="page-link" href="{% url 'clinics' %}?page={{ page.next_page_number }}">
+					      		{{ page.next_page_number }}
+					  		</a>
+					    </li>
+					    {% endif %}
+
+
+					    {% if page.has_next %} 
+					    <li class="page-item">
+					      <a class="page-link" href="{% url 'clinics' %}?page={{ page.next_page_number }}">
+					      Next</a>
+					    </li>
+					    {% endif %}
+
+					  </ul>
+					</nav>
+
+
+
+
+		</div>
+
+		
+    </div>
+</div>
+  
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script >
+	
+$("#msg").fadeTo(2000, 500).slideUp(500, function(){
+    $("#smsg").slideUp(500);
+});
+
+
+
+/*setTimeout(function(){
+if($('#msg').length > 0){
+$('#msg').remove();
+}
+
+
+}, 1500)*/
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+<!-- this is doctor management page
+
+<form method="POST">
+	{% csrf_token %}
+	{{form}}
+	<input type = "submit" value ="create"/>
+	
+</form>
+
+<form method = "GET">
+	
+	{{filter.form}}
+	<input type="submit" value="Search ">
+</form>
+
+<table border = "1"> 
+	<tr>
+	<th>user name</th>
+	<th>Date of Birth</th>
+	<th>contact number</th>
+	<th>update</th>
+	<th>Delete</th>
+	</tr>
+	{% for doctor in doctors %}
+	<tr>
+	<td>{{doctor.user.username}}</td>
+	<td>{{doctor.dob}}</td>
+	<td>{{doctor.contact}}</td>
+	<td><a href = "../update_doctor/{{doctor.user_id}}">Update</a></td>
+	<td><a href = "../delete_doctor/{{doctor.user_id}}">Delete</a></td>
+	</tr>
+	{% endfor %}
+</table> -->	
+

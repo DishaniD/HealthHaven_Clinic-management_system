@@ -1,0 +1,133 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Content -->
+<div class="content">
+	
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Local Offers & News Management</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+<div style="background-color:#C2DFFF; padding-top:30px; padding-bottom:70px; padding-left:20px; padding-right:20px;"  >
+<div class="row">
+<div class="col-md-5">
+<form method = "POST"  style="margin-left:10px;" class="pl-3">
+         {% csrf_token %}
+
+            <div class="row d-flex justify-content-center align-items-center "  id="success-alert" >
+                  {% if messages %}
+                     
+                     {% for message in messages %}
+                     <div class="alert {{ message.tags }}" role="alert" id="msg"  
+                        style="width: 250px; height:40px; text-align: center; font-style: italic; padding-top: 7px;  margin-left: 60px; border-radius: 5px; font-weight: bolder;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                           <span aria-hidden="true"></span>
+                        </button>
+                        {{ message }}
+                     </div>
+
+
+                     {% endfor %}
+
+                  {% endif %}
+
+            </div>
+
+{{form}}
+{{form.errors}}
+
+
+
+{{form2}}
+         
+         <input type="submit" value="Save " name="save" style="color: black; margin-top:20px;" class="btn btn-outline-info  border-2 fw-bold btn-sm fst-italic float-end">
+
+         <input type="submit" value="Delete" style="color: black; margin-top:20px;" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left">
+
+         <input type="reset"  value="Cancel" style="color: black; margin-top:20px; margin-right: 10px;" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end">
+      </form>
+</div>   
+
+	<!-- Start Club Table -->
+
+    	<div class="col-md-7 mt-2 ml-auto table-responsive " >
+    		<table class="table table-hover tbl-mgt">
+    			<thead>
+    				<tr>
+    					<th scope="col">Title</th>
+                  <th scope="col">Discription</th>
+                  <th scope="col">Created</th>
+						<th scope="col" colspan="2">View</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+					{% for d in data %}
+					<tr>
+						<td>{{d.title}}</td>
+						<td>{{d.description}}</td>
+                  <td>{{d.created_by}}</td>
+						<td>   
+                     <a class="btn btn-info btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" 
+              style="color: black;"  id="btnView" >Read</a>
+                  </td>
+					</tr>
+					{% endfor %}
+				</tbody>
+
+    		</table>
+    	</div>
+
+   <!-- End Club Table -->
+	<!-- End Club Management -->
+</div>
+<!-- End Content -->
+
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script >
+   
+$("#msg").fadeTo(2000, 500).slideUp(500, function(){
+    $("#smsg").slideUp(500);
+});
+
+
+
+/*setTimeout(function(){
+if($('#msg').length > 0){
+$('#msg').remove();
+}
+
+
+}, 1500)*/
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

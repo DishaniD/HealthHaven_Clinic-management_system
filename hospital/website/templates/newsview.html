@@ -1,0 +1,120 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Content -->
+<div class="content">
+	
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Offers & News</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<div class="row" style="background-color:#C2DFFF; padding-top:30px; padding-bottom:70px; padding-left:20px; padding-right:20px;" >
+ <div class="col-sm-6" >
+
+<table class=" table table-hover "  >
+  <thead> 
+    <tr  >
+     <th style="color:green; font-size:20px;">
+        Global News And offers
+     </th>
+    </tr>
+
+  </thead>
+    {% for d in data %}
+    <tr>
+      <th style="color: red; font-size:20px;"> <span style="color:darkgoldenrod; font-size: 30px;"> *</span> {{d.title}}</th>
+    </tr>
+
+     <tbody >
+          <tr style="background-color:#BEBEBF;">
+            <td>{{d.description}}</td>
+            <td></td>
+            <td>   
+                <!-- <a class="btn btn-info btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}"  style="color: black;"  id="btnView" >Read</a> -->
+            </td>
+          </tr>
+          <tr style="border-bottom: solid black 2px; font-style:italic; font-weight:bold; font-size:14px;">
+            <td></td>
+            <td>{{d.created_by}}</td>
+            <td>{{d.created_at}}</td>
+          </tr>
+          {% endfor %}
+</tbody>
+  <tfoot>
+    
+  </tfoot>
+
+</table>
+</div> 
+
+
+
+<div class="col-sm-6">
+
+<table class=" table table-hover " >
+   <thead> 
+    <tr  >
+     <th style="color:hotpink; font-size:20px;">
+        Local New And offers
+     </th>
+    </tr>
+  </thead>
+
+    {% for d in data2 %}
+    <tr>
+      <th style="color:darkblue;font-size:20px;"><span style="color:darkgoldenrod; font-size: 30px;">*</span>{{d.title}} </th>
+    </tr>
+
+ 
+          <tr style="background-color:#BEBEBF;">
+            <td>{{d.description}}</td>
+            <td></td>
+            <td>   
+                <!-- <a class="btn btn-info btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}"  style="color: black;"  id="btnView" >Read</a> -->
+            </td>
+          </tr>
+          <tr style="border-bottom: solid black 2px; font-style:italic; font-weight:bold; font-size:14px;">
+            <td></td>
+            <td>{{d.created_by}}</td>
+            <td>{{d.created_at}}</td>
+          </tr>
+          {% endfor %}
+
+  <tfoot>
+    
+  </tfoot>
+
+</table>
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

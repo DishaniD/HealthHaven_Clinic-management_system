@@ -1,0 +1,60 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div style="background-color:#C2DFFF; " >
+<div class="rounded-pill text-center fw-bold fs-6 shadow p-3 mb-4 bg-body rounded " style = "background-color:red; width:300px; margin-left:500px;">
+Allergy medicines Report </div>
+  
+</div>
+<div>
+    <canvas id="myChart" width="400" height="100"></canvas>
+</div>
+
+<script type="text/javascript">
+    
+
+$(document).ready(function(){
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var config = {
+        type: 'bar',
+        data: {
+            labels:[' Insulin', 'Cetuximab', 'Penicillin', 'Blistex', 'Anbesol'],
+            datasets:[{
+                label:'# Patients',
+                data:[50, 30, 40, 20, 10],
+
+                backgroundColor: [
+                    'rgba(255, 10, 255, 0.5)'
+                ],
+                
+                borderColor: [
+                    'rgba(255, 159, 64, 1)'
+                ]}
+
+
+            ]
+        },
+        options:{},
+
+    };
+    var myChart = new Chart(ctx, config);
+});
+
+
+/*$('#cmbDiagnosis').change(function(){
+
+  alert(this.value);
+
+});*/
+
+
+
+</script>
+
+
+
+
+{% endblock %}
+

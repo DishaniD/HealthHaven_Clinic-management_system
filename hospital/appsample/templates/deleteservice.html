@@ -1,0 +1,10 @@
+<h1>are you sure want to delete {{service}}?</h1>
+
+
+<form method = "POST">
+	{% csrf_token %}
+	<a href= "{%url 'service'%}" > Cancel</a>
+	<input type="submit" value="confirm"/>
+	
+
+</form>

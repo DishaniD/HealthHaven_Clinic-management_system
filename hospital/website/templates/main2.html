@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'resourse/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'resourse/bootstrap/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'resourse/style/card.css' %}">
+
+    <script defer src="{% static 'resourse/fontawesome/js/fontawesome.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+    <script defer src="{% static 'resourse/fontawesome/js/solid.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'resourse/fontawesome/css/all.css' %}">  
+
+    <script src="{% static 'resourse/jquery/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'resourse/jquery/popper.min.js' %}"></script>
+    <script src="{% static 'resourse/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'resourse/script/sweetalert.min.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'resourse/bootstrap/css/bootstrap4-toggle.min.css' %}">
+    <script src="{% static 'resourse/bootstrap/js/bootstrap4-toggle.min.js' %}"></script>
+
+
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static 'dist/js/demo.js' %}"></script>
+
+
+    <title>Home | BMedical</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <script src="{% static 'resourse/script/request.js' %}"></script>
+    <script src="{% static 'js/my.js' %}"></script>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500&display=swap');
+
+        *{
+            font-family: 'Asap', sans-serif;
+
+        }
+
+
+        .nav-item {
+            padding-right: 30px;
+        }
+
+        .nav-link:hover {
+            color: blue !important;
+            cursor: pointer;
+        }
+
+        .topnav a:hover {
+            border-bottom: 3px solid blue;
+        }
+  
+        .social-part .fa{
+            padding-right:20px;
+        }
+       
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        }
+
+        $(document).ready(function () {
+        $('.drop .dmenu').hover(function () {
+                $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+            }, function () {
+                $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+            });
+        });
+
+
+    </script>
+</head>
+
+<body style="margin: 0px;">
+
+    <!--Nav Bar-->
+    <div class="row fixed-top" >
+        <div class="row" style="width: 1380px; height: 35px;  ">
+            <div class="col-md-4" style="background-color:orangered; color: white; font-weight: bold; text-align: center; padding-top: 4px;"> FOR EMERGENCY: +94 011 4000 100</div>
+            <div class="col-md-8 d-md-flex justify-content-md-end" style="background-color:rebeccapurple;">
+            <p
+               class=" m-1 "
+               href="#!" style="height: 27px; border-style: none; color: white; " >
+               follow Us
+           </p>
+
+            <a
+               class="btn btn-sm m-1 btn-outline-light"
+               href="#!" style="height: 27px;" >
+               <i class="fab fa-facebook-f" ></i>
+           </a>
+
+            <!-- Twitter -->
+            <a
+               class="btn btn-sm btn-outline-light btn-floating m-1"
+               href="#!" style="height: 27px;">
+               <i class="fab fa-twitter"></i>
+           </a>
+
+            <!-- Google -->
+            <a
+               class="btn btn-sm btn-outline-light btn-floating m-1"
+               href="#!" style="height: 27px;">
+               <i class="fab fa-google"></i >
+           </a>
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-sm btn-outline-light btn-floating m-1"
+               href="#!" style="height: 27px;">
+               <i class="fab fa-instagram"></i>
+           </a>
+
+            </div>
+        </div>
+       <nav class="navbar navbar-expand-sm drop " style="width: 1364px; height: 55px; padding: 5px; margin-bottom: 0px; background-color: #f4f6f9; ">
+        <img src="{% static 'images/_lotus.png' %}" alt="Royal Hospital" class="normal-logo"  style="padding: 14.5px 0; max-height: 80px; padding-left: 100px;">
+
+        <div class="collapse navbar-collapse " style="margin-left: 300px;">
+          <ul class="navbar-nav  topnav " >
+            <li class="nav-item " >
+              <a class="nav-link " href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Our Clinics
+            </a>
+            <div class="dropdown-menu sm-menu" style="background-color: #E2E5DE; border-style: none; ;">
+              <a class="dropdown-item" href="{% url 'skincare' %}">Skin Clinic</a>
+              <a class="dropdown-item" href="{% url 'eyecare' %}">Eye Clinic</a>
+              <a class="dropdown-item" href="{% url 'entcare' %}">ENT Clinic</a>
+            </div>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link " href="#contactus">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#aboutus">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Carees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'confirm' %}" s>LOGIN </a>
+          </li>
+
+
+          </ul>
+
+        </div>
+      </nav>
+    </div>
+
+
+            {% block content%}
+
+            {% endblock %}
+
+<footer  class="text-center text-lg-start text-white" style="background-color: #929fba" >
+
+    <!-- Grid container -->
+    <div class="container  ">
+      <!-- Section: Links -->
+      <section class="">
+
+        <!--Grid row-->
+        <div class="row">
+            <hr class=" mt-3 " style="background-image: radial-gradient(circle, black, gray);
+             height: 2px; "  > 
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3  mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Boralesgauwa Medical Center
+            </h6>
+            <p>
+              Bmedical is Leading Private healthcare Institution with superior care with world class facilities in the heart of Sri Lanka.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 ml-5">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Clinics</h6>
+            <p>
+              <a class="text-white">Eye Clinic</a>
+            </p>
+            <p>
+              <a class="text-white">Skin Clinic</a>
+            </p>
+            <p>
+              <a class="text-white">ENT Clinic</a>
+            </p>
+            <p>
+              <a class="text-white">Cardiology Clinic</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> Colombo, 0005</p>
+            <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2  mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+            <!-- Facebook -->
+            <a
+               class="btn  btn-floating m-1 btn-outline-light"
+               href="#!">
+               <i class="fab fa-facebook-f"></i>
+           </a>
+
+            <!-- Twitter -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               href="#!">
+               <i class="fab fa-twitter"></i>
+           </a>
+
+            <!-- Google -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               href="#!">
+               <i class="fab fa-google"></i >
+           </a>
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               href="#!">
+               <i class="fab fa-instagram"></i>
+           </a>
+
+            <!-- Linkedin -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"               
+               href="#!">
+               <i class="fab fa-linkedin-in"></i>
+           </a>
+            
+          </div>
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/"
+         >BMedical.com</a
+        >
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+
+</div>
+
+
+
+</body>
+
+</html>

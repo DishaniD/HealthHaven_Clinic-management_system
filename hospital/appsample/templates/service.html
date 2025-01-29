@@ -1,0 +1,138 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+  #example1_info{
+    display: none !important;
+  }
+
+  .dataTables_length{
+    display: none !important;
+
+  }
+
+
+</style>
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Service Management</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background-color:#C2DFFF;" >
+
+<div class="row">
+    <div class=" p-3 my-3  col-md-4"  >
+		<form method = "POST"  style="margin-left:10px;" class="pl-3">
+			{% csrf_token %}
+
+		
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-3 col-form-label fw-bold">Service Name</label>
+   					<div class="col-sm-9">
+     					 <!--<input type="email" class="form-control" >-->
+     					 {{form.name}}
+    				</div>
+  				</div>
+
+  				<div class="row mb-3">
+    				<label  class="col-sm-3 col-form-label fw-bold">Charge</label>
+   					<div class="col-sm-9">
+     					 <!--<input type="email" class="form-control" >-->
+     					 {{form.charge}}
+    				</div>
+  				</div>
+			
+			
+			<input type="submit" value="Add New " name="save" style="color: black" class="btn btn-outline-info  border-2 fw-bold btn-sm fst-italic float-end">
+			<input type="submit" value="Delete" style="color: black" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left">
+			<input type="reset"  value="Cancel" style="color: black" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end">
+		</form>
+    </div>
+    <div class="p-3 my-3  col-md-8 " >
+
+      <!-- /.card-header -->
+      <div class="card-body" style="background-color:#C2DFFF;">
+      <h5 style="margin-bottom: -30px;">All Appointments</h5>
+      <table id="example1" class="table table-bordered table-striped table-hover " >
+        <thead style="background-color:gray; color:black;">
+					<tr>
+						<th scope="col">Service name</th>
+						<th scope="col">Charge</th>
+						<th scope="col">View</th>
+						
+					</tr>
+        </thead>
+				<tbody>
+					{% for d in data %}
+					<tr>
+														
+						<td>{{d.name}}</td>
+						<td>{{d.charge}}</td>
+						<td>
+							<a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" style="color: black;" >View</a>
+							
+					</tr>
+					{% endfor %}
+				</tbody>
+        <tfoot>
+        </tfoot>
+      </table>
+
+
+
+
+		</div>
+
+		
+    </div>
+</div>
+  
+</div>
+
+
+
+
+<!-- DataTables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
+  });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

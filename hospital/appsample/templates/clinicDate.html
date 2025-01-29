@@ -1,0 +1,397 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+	#example1_info{
+		display: none !important;
+	}
+
+	.dataTables_length{
+		display: none !important;
+
+	}
+
+
+</style>
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Clinic Date Management</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid --->
+</section>
+
+<div style="background-color:#C2DFFF;"  >
+
+<div class="row">
+    <div class=" p-3 my-3  col-md-4"  >
+			<form method = "POST"  style="margin-left:10px;" class="pl-3">
+				{% csrf_token %}
+
+	        {% for field in form %}
+	         <div class="row mb-3" >
+	            <label  class="col-sm-3 col-form-label fw-bold" for="{{field.auto_id}}">
+	                {{field.label}}
+	                {% if field.field.required %} <span style="color:red;">*</span>{% endif %}
+
+	            </label>        
+	            <div class="col-sm-9" > 
+	                 {{field}}
+	                 {{field.help_text}}
+	                 {{field.errors}}
+	            </div>                              
+	        </div>
+	        {% endfor %}
+
+	        {% if perms.appsample.view_clinicdate %}
+
+					<input type="submit" value="Save " name="save" style="color: black; margin-left:20px;" class="btn btn-outline-info  border-2 fw-bold btn-sm fst-italic float-end">
+					<input type="submit" value="Delete" id="id_delete" hidden style="color: black" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left">
+					<input type="reset"  value="Cancel" style="color: black" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end">
+					{% endif %}
+			</form>
+    </div>
+		<div class="p-3 my-3  col-md-8  " >
+
+			<!-- /.card-header -->
+			<div class="card-body" style="background-color:#C2DFFF;">
+			<h5 style="margin-bottom: -30px;">All Clinic Dates</h5>
+			<table id="example1" class="table table-bordered table-striped table-hover " >
+			  <thead style="background-color:gray; color:black;">
+			  <tr>
+          <th>Start Time</th>
+          <th>Clinic</th>
+          <th>Doctor </th>
+          <th>Nurse </th>
+          <th>Capacity</th>
+          <th>Currentno</th>
+          <th>Occupied</th>
+          <th>View</th>
+			  </tr>
+			  </thead>
+			  <tbody>
+        {% for d in page.object_list %}
+				<tr>									
+					<td>{{d.start_time}}</td>
+					<td>{{d.clinic}}</td>
+					<td>{{d.doctor}}</td>
+					<td>{{d.nurse}}</td>
+					<td>{{d.capacity}}</td>
+					<td>{{d.currentno}}</td>
+					<td>{{d.occupied}}</td>
+					<td>
+							<a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" style="color: black;" >View</a>
+				
+					</tr>
+					{% endfor %}
+         	</tbody>
+			  	<tfoot>
+			 		</tfoot>
+			</table>
+
+		</div>
+
+
+    </div>
+</div>
+  
+</div>
+
+
+<!-- DataTables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
+  });
+
+/*  Filters	*/
+
+$('#id_clinic').change(function(){
+
+  /*alert("hello");*/
+
+  var combo = document.getElementById('id_clinic');
+  var clinic_id = combo.value;
+
+  $.ajax({
+  	url:'/api/clinic/' + clinic_id,
+    
+ 
+  	success:function(data){
+       /*console.log(data);*/
+       var designation = parseInt(data.designation);
+
+
+
+	    $.ajax({
+		    url:'../api/designation_employees/',
+		    data:{
+		      'designation_id':designation
+
+		    },
+		    
+		    success:function(data){
+		       /*console.log(data);*/
+		       
+		       var cmbDoctor =  document.getElementById('id_doctor');
+		       cmbDoctor.disabled = false;
+		       cmbDoctor.innerHTML = '<option disabled selected ></option>';
+		       data.forEach(function(doctor){
+		        var option = document.createElement('option');
+		        option.value = doctor.user__id;
+		        option.innerHTML = doctor.user__username;
+		        /*console.log(option);*/
+		        cmbDoctor.appendChild(option);
+		      
+		      });
+
+
+		    }
+
+
+	  	});
+
+
+    }
+
+  });
+
+
+
+
+
+});
+
+
+
+$(document).ready(function(){
+
+{% if reveal  %}
+
+document.getElementById('id_delete').hidden = false;
+
+
+{% else %}
+
+document.getElementById('id_delete').hidden = true;
+{% endif %}
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+{% endblock %}
+
+
+
+
+<!-- $('#id_clinic').change(function(){
+
+  /*alert("hello");*/
+
+  var combo = document.getElementById('id_clinic');
+  var clinic_id = combo.value;
+
+  $.ajax({
+  	url:'../api/clinicdetails/' + clinic_id,
+    
+ 
+  	success:function(data){
+       /*console.log(data);*/
+       var designation = parseInt(data.designation);
+
+
+
+	    $.ajax({
+		    url:'../api/designation_employees/',
+		    data:{
+		      'designation_id':designation
+
+		    },
+		    
+		    success:function(data){
+		       /*console.log(data);*/
+		       
+		       var cmbDoctor =  document.getElementById('id_doctor');
+		       cmbDoctor.disabled = false;
+		       cmbDoctor.innerHTML = '<option disabled selected >---------</option>';
+		       data.forEach(function(doctor){
+		        var option = document.createElement('option');
+		        option.value = doctor.user__id;
+		        option.innerHTML = doctor.user__username;
+		        /*console.log(option);*/
+		        cmbDoctor.appendChild(option);
+		      
+		      
+		      });
+
+
+
+
+
+
+		    }
+
+
+	  	});
+
+
+
+    }
+
+  });
+
+
+
+
+
+}); -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- my table -->
+
+
+<!-- 
+		<div class= "row pt-3 pl-5 pr-4">
+
+					<table class="table  table-hover caption-top  ">
+						<thead class=" table-active" style="background-color:gray; color:lightgray;">
+							<tr>
+								<th scope="col">Start Time</th>
+								<th scope="col">Clinic</th>
+								<th scope="col">Doctor</th>
+								<th scope="col">Capacity</th>
+								<th scope="col">Currentno</th>
+								<th scope="col">Occupied</th>
+								<th scope="col">View</th>
+								
+							</tr>
+						</thead>
+				  
+						<tbody>
+							{% for d in page.object_list %}
+							<tr>
+																
+								<td>{{d.start_time}}</td>
+								<td>{{d.clinic}}</td>
+								<td>{{d.doctor}}</td>
+								<td>{{d.capacity}}</td>
+								<td>{{d.currentno}}</td>
+								<td>{{d.occupied}}</td>
+
+								<td>
+									<a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" style="color: black;" >View</a>
+									
+							</tr>
+							{% endfor %}
+						</tbody>
+
+						<tfoot>
+
+						</tfoot>
+				  
+					</table> -->
+						

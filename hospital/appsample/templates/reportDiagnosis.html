@@ -1,0 +1,106 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+<div style="background-color:#C2DFFF;" >
+<div class="rounded-pill text-center fw-bold fs-5 shadow p-3 mb-4 bg-body rounded " style = "background-color:red; width:300px; margin-left:500px;">
+Charts </div>
+  
+</div>
+<form method = "POST"  style="margin-left:10px;" class="pl-3">
+<div class="row mb-3">
+	<label  class="col-sm-3 col-form-label fw-bold">Diagnosis name</label>
+	<select class="col-sm-4 col-form-label " id="cmbDiagnosis">
+	  <option  selected disabled>Select One</option>
+
+	  {% for diagnosis in diagnosises %}
+		    <option value="{{ diagnosis.id }}">{{ diagnosis.name }}</option>
+	  {% endfor %}
+
+
+	</select>
+</div>
+</form>
+<div>
+	<canvas id="myChart" width="400" height="100"></canvas>
+</div>
+
+<script type="text/javascript">
+	
+
+$(document).ready(function(){
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var config = {
+		type: 'bar',
+		data: {
+			labels:['January', 'February', 'March', 'April', 'May', 'June'],
+			datasets:[{
+				label:'# male of Users',
+				data:[10, 10, 18, 20, 20, 30, 45],
+
+            backgroundColor: [
+                'rgba(255, 159, 64, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 99, 132, 0.5)'
+            ],
+            
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ]},{
+
+				label:'# female of Users',
+				data:[10, 20, 30, 12, 3, 40, 50],
+			
+			backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)'
+            ],
+            
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+
+
+        },
+
+
+			]
+		},
+		options:{},
+
+	};
+	var myChart = new Chart(ctx, config);
+});
+
+
+$('#cmbDiagnosis').change(function(){
+
+  alert(this.value);
+
+});
+
+
+</script>
+
+
+
+
+{% endblock %}
+

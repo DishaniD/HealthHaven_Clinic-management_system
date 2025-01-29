@@ -1,0 +1,351 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+  #example1_info{
+    display: none !important;
+  }
+
+  .dataTables_length{
+    display: none !important;
+
+  }
+
+
+</style>
+
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Appoinment (for reciptionist)</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Layout</a></li>
+          <li class="breadcrumb-item active">Fixed Footer Layout</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<div style="background-color:#C2DFFF;"  >
+
+<div class="row">
+    <div class=" p-3 my-3  col-md-4"  >
+		<form method = "POST"  style="margin-left:10px;" class="pl-3">
+			{% csrf_token %}
+
+
+          <div class="row d-flex justify-content-center align-items-center "  id="success-alert" >
+            {% if messages %}
+              
+                {% for message in messages %}
+                <div class="alert {{ message.tags }}" role="alert" id="msg"  style="width: 250px; height:40px; text-align: center; font-style: italic; padding-top: 7px;  margin-left: 60px; border-radius: 5px; font-weight: bolder;">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true"></span>
+                  </button>
+                {{ message }}
+                </div>
+
+
+                {% endfor %}
+
+            {% endif %}
+
+          </div>
+          {{form.errors}}
+	
+          {% for field in form %}
+           <div class="row mb-3" >
+              <label  id="lbl_{{field.auto_id}}" class="col-md-4 col-form-label fw-bold" for="{{field.auto_id}}">
+                  {{field.label}}
+                  {% if field.field.required %} <span style="color:red;">*</span>{% endif %}
+
+              </label>        
+              <div class="col-md-7" > 
+                   {{field}}
+                   {{field.help_text}}
+                   {{field.errors}}
+              </div>                              
+          </div>
+          {% endfor %}
+
+          {% for field in invoiceform %}
+           <div class="row mb-3" >
+              <label  id="lbl_{{field.auto_id}}" class="col-md-4 col-form-label fw-bold" for="{{field.auto_id}}">
+                  {{field.label}}
+                  {% if field.field.required %} <span style="color:red;">*</span>{% endif %}
+
+              </label>        
+              <div class="col-md-7" > 
+                   {{field}}
+                   {{field.help_text}}
+                   {{field.errors}}
+              </div>                              
+          </div>
+          {% endfor %}  	
+			
+			
+			<input type="submit" value="Save "   name="save" style="color: black; margin-top: 20px;" class="btn btn-outline-info  border-2 fw-bold btn-sm fst-italic float-end">
+			<input type="submit" value="Delete" hidden id="id_delete" style="color: black; margin-top: 20px;" class="btn btn-danger  border-2 fw-bold btn-sm fst-italic float-left">
+			<input type="reset"  value="Cancel"  style="color: black; margin-right: 10px; margin-top: 20px;" class="btn btn-secondary  border-2 fw-bold btn-sm fst-italic float-end">
+
+		</form>
+    </div>
+    <div class="p-3 my-3  col-md-8  " >
+
+      <!-- /.card-header -->
+      <div class="card-body" style="background-color:#C2DFFF;">
+      <h5 style="margin-bottom: -30px;">All Appointments</h5>
+      <table id="example1" class="table table-bordered table-striped table-hover " >
+        <thead style="background-color:gray; color:black;">
+        <tr>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Appoint No</th>
+          <th scope="col">Clinic </th>
+          <th scope="col">Doctor </th>
+          <th scope="col">Clinic Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">View</th>
+          
+        </tr>
+        </thead>
+        <tbody>
+          {% for d in page.object_list %}
+          <tr>
+            <td>{{d.patient}}</td>
+            <td>{{d.appo_no}}</td>
+            <td>{{d.clinic}}</td>
+            <td>{{d.clinic_date.doctor}}</td>
+            <td>{{d.clinic_date.start_time}}</td>
+            <td>{{d.appoinment_status}}</td>
+            <td>
+              <a class="btn btn-outline-warning btn-sm border-2 fst-italic fw-bold" href = "{{d.id}}" 
+              style="color: black;"  id="btnView">View</a>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
+      </table>
+
+    </div>
+
+
+    </div>
+</div>
+  
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- DataTables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script>
+
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
+  });
+
+
+/*checkbox selector*/
+$(document).ready(function() {
+    $('#id_symptoms').select2({
+        width: '100%' 
+    });
+});
+
+
+/*selector filter*/
+
+$(document).ready(function() {
+    $('#id_patient').select2({
+        width: '100%' 
+    });
+});
+
+
+  
+$("#msg").fadeTo(2000, 500).slideUp(500, function(){
+    $("#smsg").slideUp(500);
+});
+
+
+/*function reveal(){
+  document.getElementById('id_doctor').hidden = false;
+}*/
+
+$(document).ready(function(){
+
+{% if reveal  %}
+
+document.getElementById('id_doctor').hidden = false;
+document.getElementById('id_clinic_date').hidden = false;
+document.getElementById('lbl_id_clinic_date').hidden = false;
+document.getElementById('lbl_id_doctor').hidden = false;
+document.getElementById('id_delete').hidden = false;
+
+
+{% else %}
+
+document.getElementById('id_doctor').hidden = true;
+document.getElementById('id_clinic_date').hidden = true;
+document.getElementById('lbl_id_clinic_date').hidden = true;
+document.getElementById('lbl_id_doctor').hidden = true;
+document.getElementById('id_delete').hidden = true;
+{% endif %}
+
+});
+
+
+/*designation filter*/
+
+$('#id_clinic').change(function(){
+
+  /*alert("hello");*/
+
+  var combo = document.getElementById('id_clinic');
+  var clinic_id = combo.value;
+
+  $.ajax({
+    url:'/api/clinic/' + clinic_id,
+    
+ 
+    success:function(data){
+       console.log(data);
+       var designation = parseInt(data.designation);
+
+
+
+        $.ajax({
+            url:'../api/designation_employees/',
+            data:{
+              'designation_id':designation
+
+            },
+            
+            success:function(data){
+               /*console.log(data);*/
+               
+               var cmbDoctor =  document.getElementById('id_doctor');
+               var lblDoctor =  document.getElementById('lbl_id_doctor');
+               cmbDoctor.hidden = false;
+               lblDoctor.hidden = false;
+               cmbDoctor.innerHTML = '<option disabled selected >your doctor</option>';
+               data.forEach(function(doctor){
+                var option = document.createElement('option');
+                option.value = doctor.user__id;
+                option.innerHTML = doctor.user__username;
+                /*console.log(option);*/
+                cmbDoctor.appendChild(option);
+              
+              });
+
+            }
+
+        });
+
+    }
+
+  });
+
+});
+
+
+
+
+/*Clinic dates load*/
+
+$('#id_doctor').change(function(){
+
+ /* alert("hello");
+*/
+  var combo = document.getElementById('id_doctor');
+  var doctor_id = combo.value;
+
+  $.ajax({
+    url:'../api/doctor_clinic_date',
+    data:{
+      'doctor_id':doctor_id
+
+    },
+    success:function(data){
+      var cmbClinicDate =  document.getElementById('id_clinic_date');
+      var lblClinicDate =  document.getElementById('lbl_id_clinic_date');
+      cmbClinicDate.hidden = false;
+      lblClinicDate.hidden = false;
+      cmbClinicDate.innerHTML = '<option disabled selected >select date</option>';
+      data.forEach(function(clinic_date){
+        var option = document.createElement('option');
+        option.value = clinic_date.id;
+        option.innerHTML = clinic_date.start_time;
+        /*console.log(option);*/
+        cmbClinicDate.appendChild(option);
+      
+      
+      });
+    }
+
+  });
+
+});
+
+
+
+$('#id_clinic_date').change(function(){
+
+  var combo = document.getElementById('id_clinic_date');
+  var clinic_date_id = combo.value;
+
+  $.ajax({
+    url:'../api/clinic_date_details/' + clinic_date_id,
+    
+    success:function(data){
+      var textappoinmentnumber =  document.getElementById('id_appo_no');
+      var occupied = parseInt(data.occupied);
+      var capacity = parseInt(data.capacity);
+
+      if(occupied < capacity){ 
+        textappoinmentnumber.value = parseInt(data.occupied) + 1;
+      }
+
+      else {
+        alert("capacity full");
+        combo.selectedIndex = 0;
+      }
+    
+    
+    }
+
+
+  });
+
+
+});
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,74 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+<div style="background-color:#C2DFFF;" >
+<div class="rounded-pill text-center fw-bold fs-6 shadow p-3 mb-4 bg-body rounded " style = "background-color:red; width:300px; margin-left:500px;">
+# of clinic dates for each doctor</div>
+  
+</div>
+<form method = "POST"  style="margin-left:10px;" class="pl-3">
+<div class="row ">
+
+    <div class="col-md-6 form-group">
+        <div class="row">
+            <label  class="col-sm-4 col-form-label fw-bold">From Date </label>
+            <input type="Date" name="" class=" col-sm-6 col-form-label">      
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div class="row">
+            <label  class="col-sm-4 col-form-label fw-bold">To Date </label>
+            <input type="Date" name="" class=" col-sm-6 col-form-label">           
+        </div>
+    </div>
+</div>
+</form>
+<div style="width: 400px;" class="row">
+	<canvas id="myChart" ></canvas>
+</div>
+
+<script type="text/javascript">
+	
+
+$(document).ready(function(){
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var config = {
+		type: 'pie',
+		data: {
+			labels:['Skin Clinic', 'Eye Clinic', 'ENT Clinic'],
+			datasets:[{
+				label:'#Clinic Dates',
+				data:[50, 30, 40],
+
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.5)',
+                ],
+                
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ]}
+            ]
+			
+		},
+		options:{},
+
+	};
+	var myChart = new Chart(ctx, config);
+});
+
+
+/*$('#cmbDiagnosis').change(function(){
+
+  alert(this.value);
+
+});*/
+
+
+
+</script>
+
+
+
+{% endblock %}
+
